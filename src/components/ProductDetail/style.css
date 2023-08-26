@@ -35,11 +35,20 @@ img.product-image {
     margin: 0 auto !important;
 }
 
-.add-to-cart-button {
-    text-align: center; 
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    margin-top: 20px;
 }
 
-.add-to-cart-button .btn {
-    padding: 10px 20px; /* Adjust as needed */
+.custom-btn, .goto-cart-btn {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    padding: 16px 32px !important
+}
+
+.custom-btn {
+    margin-right: 20px !important;
 }
