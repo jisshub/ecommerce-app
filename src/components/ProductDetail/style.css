@@ -1,6 +1,6 @@
 /* Custom styles for product details */
 .product-detail {
-    min-height: 100vh; /* Ensures it takes full viewport height */
+    min-height: 100vh;
     padding: 20px;
 }
 
@@ -10,6 +10,16 @@
     margin: 20px auto;
 }
 
+.product-description {
+    max-width: 600px; 
+    margin: 0 auto; 
+    line-height: 1.5;
+}
+
+.product-description::first-letter {
+    text-transform: capitalize;
+}
+
 .product-detail h1,
 .product-detail h2,
 .product-detail h3,
@@ -17,3 +27,12 @@
     margin: 20px 0;
     text-align: center;
 }
+
+img.product-image {
+    max-width: 100% !important;
+    max-height: 500px !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+

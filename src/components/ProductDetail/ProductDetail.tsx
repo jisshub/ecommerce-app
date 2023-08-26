@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/product';
 import { Product } from '../../productTypes';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import './style.css';
 
 const ProductDetail: React.FC = () => {
     let { id = '0' } = useParams<{ id?: string }>();
@@ -25,14 +28,22 @@ const ProductDetail: React.FC = () => {
     }
 
     return (
-        <div className="product-detail d-flex flex-column justify-content-center align-items-center">
-            <img src={product.image} alt={product.title} />
-            <h1>{product.title}</h1>
-            <p>{product.description}</p>
-            <h2><strong>Price:</strong> ${product.price}</h2>
-            <h3><strong>Rating:</strong> {product.rating.rate}</h3>
-            <p><strong>Number of reviews:</strong> {product.rating.count}</p>
-        </div>
+        <>
+            <Header />
+                <div className="product-detail d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+                    <img 
+                        src={product.image} 
+                        alt={product.title}
+                        className='product-image'     
+                    />
+                    <h1>{product.title}</h1>
+                    <p className='product-description'>{product.description}</p>
+                    <h2><strong>Price:</strong> ${product.price}</h2>
+                    <h3><strong>Rating:</strong> {product.rating.rate}</h3>
+                    <p><strong>Number of reviews:</strong> {product.rating.count}</p>
+                </div>
+            <Footer />
+        </>
     );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../api/product';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -72,7 +72,7 @@ const LandingPage: React.FC = () => {
 
                     <div className="row">
                         {filteredProducts.map(product => (
-                            <div key={product.id} className="col-md-4 mb-4 d-flex align-items-stretch">
+                            <div key={product.id} className="col-md-4 mb-4 d-flex align-items-stretch"> 
                                 <div 
                                     className="card product-card"
                                     onClick={()=>handleProductDetails(product.id)}
