@@ -1,0 +1,42 @@
+.category-filter {
+    font-family: 'Arial', sans-serif;  /* or any other font-family you prefer */
+    font-size: 16px; 
+    color: #333; 
+}
+
+.category-filter label {
+    margin-right: 10px;
+}
+
+.category-filter select {
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    color: #555;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+
+    &:hover {
+        border-color: #999;
+    }
+}
+
+.product-card {
+    width: 100%;
+}
+
+.product-card .card-title {
+    font-size: 18px;
+    color: #333;    
+}
+
+.product-card .card-text {
+    font-size: 16px;
+    color: #555;
+}
+
+.product-card .card-img-top {
+    max-height: 180px;
+    object-fit: cover;
+}

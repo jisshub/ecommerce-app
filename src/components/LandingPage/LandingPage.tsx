@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '../../api/product';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import './style.css';
 
 interface Rating {
     rate: number;
@@ -48,29 +51,35 @@ const LandingPage: React.FC = () => {
     }, [selectedCategory, products]);
 
     return (
-        <div className="landing-page">
-            <div className="category-filter">
-                <label>Filter by Category: </label>
-                <select value={selectedCategory || ''} onChange={e => setSelectedCategory(e.target.value || null)}>
-                    <option value="">All</option>
-                    {categories.map(category => (
-                        <option key={category} value={category}>{category}</option>
-                    ))}
-                </select>
-            </div>
-
-            <div className="products-list">
-                {filteredProducts.map(product => (
-                    <div key={product.id} className="product-item">
-                        <img src={product.image} alt={product.title} />
-                        <h3>{product.title}</h3>
-                        <p>{product.description}</p>
-                        <p><strong>Price:</strong> ${product.price}</p>
-                        <p><strong>Category:</strong> {product.category}</p>
+        <>
+            <Header />
+                <div className="container mt-5">
+                    <div className="category-filter mb-4">
+                        <label>Filter by Category: </label>
+                        <select value={selectedCategory || ''} onChange={e => setSelectedCategory(e.target.value || null)}>
+                            <option value="">All</option>
+                            {categories.map(category => (
+                                <option key={category} value={category}>{category}</option>
+                            ))}
+                        </select>
                     </div>
-                ))}
-            </div>
-        </div>
+
+                    <div className="row">
+                        {filteredProducts.map(product => (
+                            <div key={product.id} className="col-md-4 mb-4 d-flex align-items-stretch">
+                                <div className="card product-card">
+                                    <img src={product.image} alt={product.title} className="card-img-top img-fluid" />
+                                    <div className="card-body">
+                                        <h5 className="card-title text-truncate">{product.title}</h5>
+                                        <p className="card-text"><strong>Price:</strong> ${product.price}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            <Footer />
+        </>
     );
 };
 
