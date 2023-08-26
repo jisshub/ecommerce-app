@@ -1,0 +1,19 @@
+/* Custom styles for product details */
+.product-detail {
+    min-height: 100vh; /* Ensures it takes full viewport height */
+    padding: 20px;
+}
+
+.product-detail img {
+    max-width: 80%;
+    display: block;
+    margin: 20px auto;
+}
+
+.product-detail h1,
+.product-detail h2,
+.product-detail h3,
+.product-detail p {
+    margin: 20px 0;
+    text-align: center;
+}

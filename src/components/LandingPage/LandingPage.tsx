@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getProducts } from '../../api/product';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -24,6 +25,7 @@ const LandingPage: React.FC = () => {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [categories, setCategories] = useState<string[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchProducts() {
@@ -50,6 +52,10 @@ const LandingPage: React.FC = () => {
         }
     }, [selectedCategory, products]);
 
+    const handleProductDetails = (productId: number) => {
+        navigate('/product/' + productId);
+    }
+
     return (
         <>
             <Header />
@@ -67,7 +73,10 @@ const LandingPage: React.FC = () => {
                     <div className="row">
                         {filteredProducts.map(product => (
                             <div key={product.id} className="col-md-4 mb-4 d-flex align-items-stretch">
-                                <div className="card product-card">
+                                <div 
+                                    className="card product-card"
+                                    onClick={()=>handleProductDetails(product.id)}
+                                    >
                                     <img src={product.image} alt={product.title} className="card-img-top img-fluid" />
                                     <div className="card-body">
                                         <h5 className="card-title text-truncate">{product.title}</h5>
