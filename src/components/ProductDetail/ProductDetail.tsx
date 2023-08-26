@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/product';
 import { Product } from '../../productTypes';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import showSnackbar from '../../utils/showSnackbar';
 import './style.css';
 
 const ProductDetail: React.FC = () => {
@@ -22,6 +24,20 @@ const ProductDetail: React.FC = () => {
 
         fetchProduct();
     }, [id]);
+
+    function addToCart(product: Product) {
+        try {
+            let carts: Product[] = JSON.parse(localStorage.getItem('carts') || '[]');
+            carts.push(product);
+            localStorage.setItem('carts', JSON.stringify(carts));
+            showSnackbar('Product added to cart successfully!');
+        } catch (error) {
+            console.error('Failed to add product to cart', error);
+            showSnackbar('Failed to add product to cart. Please try again.', 'error');
+        }
+    }
+    
+    
 
     if (!product) {
         return <p>Loading...</p>;
@@ -42,7 +58,7 @@ const ProductDetail: React.FC = () => {
                     <h3><strong>Rating:</strong> {product.rating.rate}</h3>
                     <p><strong>Number of reviews:</strong> {product.rating.count}</p>
                     <div className="buttons-container">
-                        <button className="btn btn-primary custom-btn" onClick={() => { /* functionality to add to cart */ }}>
+                        <button className="btn btn-primary custom-btn" onClick={() => addToCart(product)}>
                             Add to Cart
                         </button>
                         <button className="btn btn-secondary goto-cart-btn" onClick={() => { /* functionality to go to cart */ }}>
