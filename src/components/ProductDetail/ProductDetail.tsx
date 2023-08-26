@@ -41,7 +41,13 @@ const ProductDetail: React.FC = () => {
                     <h2><strong>Price:</strong> ${product.price}</h2>
                     <h3><strong>Rating:</strong> {product.rating.rate}</h3>
                     <p><strong>Number of reviews:</strong> {product.rating.count}</p>
+                    <div className="add-to-cart-button mt-4">
+                        <button className="btn btn-primary" onClick={() => { /* functionality to add to cart */ }}>
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
+                
             <Footer />
         </>
     );

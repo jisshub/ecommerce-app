@@ -35,4 +35,11 @@ img.product-image {
     margin: 0 auto !important;
 }
 
+.add-to-cart-button {
+    text-align: center; 
+    width: 100%;
+}
 
+.add-to-cart-button .btn {
+    padding: 10px 20px; /* Adjust as needed */
+}
