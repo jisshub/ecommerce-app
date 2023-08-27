@@ -5,12 +5,22 @@ import { getProduct } from '../../api/product';
 import { Product } from '../../productTypes';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import showSnackbar from '../../utils/showSnackbar';
+import CartNotificationModal from '../CartNotificationModal/CartNotificationModal';
 import './style.css';
 
 const ProductDetail: React.FC = () => {
     let { id = '0' } = useParams<{ id?: string }>();
     const [product, setProduct] = useState<Product | null>(null);
+    const [carts, setCarts] = useState<Product[]>([]);
+    const [showCartNotificationModal, setShowCartNotificationModal] = useState(false);
+
+    function handleContinueShopping() {
+        setShowCartNotificationModal(false);
+    }
+    
+    function handleViewCart() {
+        setShowCartNotificationModal(false);
+    }
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -25,19 +35,19 @@ const ProductDetail: React.FC = () => {
         fetchProduct();
     }, [id]);
 
+ 
     function addToCart(product: Product) {
         try {
-            let carts: Product[] = JSON.parse(localStorage.getItem('carts') || '[]');
-            carts.push(product);
-            localStorage.setItem('carts', JSON.stringify(carts));
-            showSnackbar('Product added to cart successfully!');
+            setCarts(prevCarts => [...prevCarts, product]);
+            setShowCartNotificationModal(true);
         } catch (error) {
             console.error('Failed to add product to cart', error);
-            showSnackbar('Failed to add product to cart. Please try again.', 'error');
         }
     }
-    
-    
+
+    useEffect(() => {
+        console.log('carts', carts);
+    }, [carts]);
 
     if (!product) {
         return <p>Loading...</p>;
@@ -61,13 +71,15 @@ const ProductDetail: React.FC = () => {
                         <button className="btn btn-primary custom-btn" onClick={() => addToCart(product)}>
                             Add to Cart
                         </button>
-                        <button className="btn btn-secondary goto-cart-btn" onClick={() => { /* functionality to go to cart */ }}>
-                            Go to Cart
-                        </button>
                     </div>
 
                 </div>
-                
+                <CartNotificationModal 
+                    show={showCartNotificationModal}
+                    onClose={() => setShowCartNotificationModal(false)}
+                    onContinueShopping={handleContinueShopping}
+                    onViewCart={handleViewCart}
+                />
             <Footer />
         </>
     );

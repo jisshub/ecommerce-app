@@ -1,0 +1,31 @@
+/* .modal-custom-bg {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.modal-custom-bg .modal-footer button {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.modal-custom-bg .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-custom-bg .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.modal-dialog-centered-custom {
+    max-width: 80%;
+    width: 600px;
+}
+
+@media (max-width: 576px) {
+    .modal-dialog-centered-custom {
+        max-width: 90%;
+        width: auto;
+    }
+} */

@@ -46,9 +46,5 @@ img.product-image {
 .custom-btn, .goto-cart-btn {
     font-size: 20px !important;
     font-weight: 600 !important;
-    padding: 16px 32px !important
-}
-
-.custom-btn {
-    margin-right: 20px !important;
+    padding: 12px 24px !important
 }
