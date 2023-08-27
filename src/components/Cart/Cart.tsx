@@ -26,16 +26,15 @@ const Cart: React.FC<CartProps> = () => {
     };
 
     return (
-    <div className='carts-wrapper'>
-        <Header />
-        <div className="cart-container mt-5 mb-5">
-            {
-                carts.length === 0 ? (
+        <div className='carts-wrapper'>
+            <Header />
+            <div className="cart-container mt-5 mb-5">
+                {carts.length === 0 ? (
                     <div className="empty-cart">
-                        <h2>Your Shopping Cart is empty</h2>
+                        <h2>Your shopping cart is empty</h2>
                     </div>
                 ) : (
-                    <div>
+                    <>
                         <h2 className="mb-4">Shopping Cart</h2>
                         {carts.map((product: Product) => (
                             <div key={product.id} className="cart-box d-flex justify-content-between align-items-center">
@@ -50,15 +49,13 @@ const Cart: React.FC<CartProps> = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                )
-            }
+                    </>
+                )}
+            </div>
+            <Footer />
         </div>
-        <Footer />
-    </div>
-
     );
+    
 }
 
 export default Cart;
-
