@@ -51,11 +51,7 @@ const ProductDetail: React.FC = () => {
             console.error('Failed to add product to cart', error);
         }
     }
-
-    useEffect(() => {
-        console.log('carts', carts);
-    }, [carts]);
-
+    
     if (!product) {
         return <p>Loading...</p>;
     }
