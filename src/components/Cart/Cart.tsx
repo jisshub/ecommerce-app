@@ -18,32 +18,47 @@ const Cart: React.FC<CartProps> = () => {
         throw new Error("Cart component must be used within CartContext.Provider");
     }
 
-    const { carts } = context;
+    const { carts, setCarts  } = context;
 
-    function handleDelete(id: number): void {
-        throw new Error('Function not implemented.');
-    }
+    const handleDelete = (productId: number) => {
+        const updatedCarts = carts.filter(product => product.id !== productId);
+        setCarts(updatedCarts);
+    };
 
     return (
-        <div className='carts-wrapper'>
-    <Header />
-    <div className="cart-container mt-5 mb-5">
-        {carts.map((product: Product) => (
-            <div key={product.id} className="cart-box d-flex justify-content-between align-items-center">
-                <div>
-                    <h5>{product.title}</h5>
-                    <p className="mb-0">Price: ${product.price}</p>
-                </div>
-                <div>
-                    <RiDeleteBin5Fill onClick={() => handleDelete(product.id)} className="delete-icon" />
-                </div>
-            </div>
-        ))}
+    <div className='carts-wrapper'>
+        <Header />
+        <div className="cart-container mt-5 mb-5">
+            {
+                carts.length === 0 ? (
+                    <div className="empty-cart">
+                        <h2>Your Shopping Cart is empty</h2>
+                    </div>
+                ) : (
+                    <div>
+                        <h2 className="mb-4">Shopping Cart</h2>
+                        {carts.map((product: Product) => (
+                            <div key={product.id} className="cart-box d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>{product.title}</h5>
+                                    <p className="mb-0">Price: ${product.price}</p>
+                                </div>
+                                <div>
+                                    <RiDeleteBin5Fill 
+                                        onClick={() => handleDelete(product.id)} className="delete-icon" 
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )
+            }
+        </div>
+        <Footer />
     </div>
-    <Footer />
-</div>
 
     );
 }
 
 export default Cart;
+
