@@ -1,18 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../api/product';
 import { Product } from '../../productTypes';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CartNotificationModal from '../CartNotificationModal/CartNotificationModal';
+import { CartContext } from '../../contexts/cartContext';
 import './style.css';
 
 const ProductDetail: React.FC = () => {
     let { id = '0' } = useParams<{ id?: string }>();
     const [product, setProduct] = useState<Product | null>(null);
-    const [carts, setCarts] = useState<Product[]>([]);
     const [showCartNotificationModal, setShowCartNotificationModal] = useState(false);
+    const context = React.useContext(CartContext);
+
+    if (!context) {
+        throw new Error("CartContext must be used within a CartContext.Provider");
+    }
+
+    const { carts, setCarts } = context;
 
     function handleContinueShopping() {
         setShowCartNotificationModal(false);

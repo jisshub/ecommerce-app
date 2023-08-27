@@ -17,6 +17,10 @@ const CartNotificationModal: React.FC<CartNotificationModalProps> = ({ show, onV
     const handleContinueShopping = () => {
         navigate('/');
     };
+
+    const handleViewCart = () => {
+        navigate('/cart');
+    };
     return (
         <div className="modal show" style={{ display: 'block' }}>
             <div className="modal-dialog modal-dialog-centered">
@@ -28,7 +32,7 @@ const CartNotificationModal: React.FC<CartNotificationModalProps> = ({ show, onV
                         <button type="button" className="btn btn-secondary" onClick={handleContinueShopping}>
                             Continue Shopping
                         </button>
-                        <button type="button" className="btn btn-primary" onClick={onViewCart}>
+                        <button type="button" className="btn btn-primary" onClick={handleViewCart}>
                             View Cart
                         </button>
                     </div>

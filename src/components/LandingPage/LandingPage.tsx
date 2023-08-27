@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getProducts } from '../../api/product';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -33,7 +33,6 @@ const LandingPage: React.FC = () => {
                 const productsList = await getProducts();
                 setProducts(productsList);
 
-                // Create a list of unique categories for the dropdown
                 const uniqueCategories = Array.from(new Set(productsList.map(product => product.category)));
                 setCategories(uniqueCategories);
             } catch (error) {
