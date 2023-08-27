@@ -20,7 +20,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%; /* or your desired width */
+    width: 80%;
     background: #f7f7f7;
     border-radius: 5px;
     padding: 15px;
@@ -35,9 +35,9 @@ h5 {
 .delete-icon {
     cursor: pointer;
     font-size: 24px;
-    color: #d32f2f; /* Change the color to your desired delete color */
+    color: #d32f2f;
 }
 
 .delete-icon:hover {
-    color: #b71c1c; /* Hover effect */
+    color: #b71c1c;
 }

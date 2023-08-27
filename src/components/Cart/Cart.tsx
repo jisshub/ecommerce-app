@@ -7,11 +7,9 @@ import Footer from '../Footer/Footer';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 
 
-// Remove the carts prop from here
 type CartProps = {};
 
 const Cart: React.FC<CartProps> = () => {
-    // Set a fallback value for the context
     const context = React.useContext(CartContext);
     
     if (!context) {
