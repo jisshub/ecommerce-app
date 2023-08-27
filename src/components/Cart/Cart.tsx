@@ -2,6 +2,8 @@ import React from 'react';
 import { Product } from '../../productTypes';
 import { CartContext } from '../../contexts/cartContext';
 import './style.css';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 // Remove the carts prop from here
 type CartProps = {};
@@ -17,13 +19,17 @@ const Cart: React.FC<CartProps> = () => {
     const { carts } = context;
 
     return (
-        <div className="cart-container">
-            {carts.map((product: Product) => (
-                <div key={product.id} className="cart-box">
-                    <h2>{product.title}</h2>
-                    <p>Price: ${product.price}</p>
-                </div>
-            ))}
+        <div className='carts-wrapper'>
+            <Header />
+            <div className="cart-container mt-5 mb-5">
+                {carts.map((product: Product) => (
+                    <div key={product.id} className="cart-box">
+                        <h2>{product.title}</h2>
+                        <p>Price: ${product.price}</p>
+                    </div>
+                ))}
+            </div>
+            <Footer />
         </div>
     );
 }

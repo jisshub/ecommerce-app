@@ -1,7 +1,12 @@
 /* style.css */
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
 .cart-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
   }
@@ -18,3 +23,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  .carts-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
