@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage/LandingPage';
 import ProductDetail from './components/ProductDetail/ProductDetail';
@@ -23,7 +23,5 @@ function App() {
     </Router>
   );
 }
-
-
 
 export default App;
