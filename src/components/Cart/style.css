@@ -24,6 +24,10 @@ html, body {
     margin-top: 20px;
 }
 
+.price-quantity {
+    justify-content: start;
+    gap: 10px;
+  }
 
 .cart-box {
     display: flex;

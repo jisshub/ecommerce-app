@@ -16,7 +16,7 @@ const ProductDetail: React.FC = () => {
     const context = React.useContext(CartContext);
 
     if (!context) {
-        throw new Error("CartContext must be used within a CartContext.Provider");
+        throw new Error("Error in cart context");
     }
 
     const { carts, setCarts } = context;
@@ -45,12 +45,24 @@ const ProductDetail: React.FC = () => {
  
     function addToCart(product: Product) {
         try {
-            setCarts(prevCarts => [...prevCarts, product]);
+            setCarts(prevCarts => {
+                const existingCartItem = prevCarts.find(item => item.product.id === product.id);
+    
+                if (existingCartItem) {
+                    return prevCarts.map(item =>
+                        item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+                    );
+                } else {
+                    return [...prevCarts, { product, quantity: 1 }];
+                }
+            });
+    
             setShowCartNotificationModal(true);
         } catch (error) {
             console.error('Failed to add product to cart', error);
         }
     }
+    
     
     if (!product) {
         return <p>Loading...</p>;

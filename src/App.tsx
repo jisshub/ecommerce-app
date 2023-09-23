@@ -4,12 +4,11 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart/Cart';
-import { CartContext } from './contexts/cartContext';
+import { CartContext, CartItem } from './contexts/cartContext';
 import './App.css';
-import { Product } from './productTypes';
 
 function App() {
-  const [carts, setCarts] = useState<Product[]>([]);
+  const [carts, setCarts] = useState<CartItem[]>([]);
   
   return (
     <Router>
