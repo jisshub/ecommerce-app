@@ -16,6 +16,15 @@ html, body {
     align-items: center;
 }
 
+.total-price {
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;  /* Choose a color that complements your UI. This is a dark gray. */
+    margin-top: 20px;
+}
+
+
 .cart-box {
     display: flex;
     justify-content: space-between;

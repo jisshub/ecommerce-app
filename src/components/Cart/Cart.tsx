@@ -28,6 +28,9 @@ const Cart: React.FC<CartProps> = () => {
         setCarts([]);
     };
 
+    // calculate total price of all products in cart
+    const totalPrice = carts.reduce((total, product) => total + product.price, 0);
+
     return (
         <div className='carts-wrapper'>
             <Header />
@@ -54,9 +57,13 @@ const Cart: React.FC<CartProps> = () => {
                         ))}
                         <div className="mt-3">
                             <button className="btn btn-danger" onClick={handleDeleteAll}>
-                                Delete All
+                                Clear Cart
                             </button>
                         </div>
+                        <p 
+                            className="total-price">
+                            Total: ${totalPrice.toFixed(2)}
+                        </p>
                     </>
                 )}
             </div>
