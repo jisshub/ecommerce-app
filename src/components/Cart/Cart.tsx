@@ -23,6 +23,11 @@ const Cart: React.FC<CartProps> = () => {
         setCarts(updatedCarts);
     };
 
+    // delete all products from cart
+    const handleDeleteAll = () => {
+        setCarts([]);
+    };
+
     return (
         <div className='carts-wrapper'>
             <Header />
@@ -33,7 +38,7 @@ const Cart: React.FC<CartProps> = () => {
                     </div>
                 ) : (
                     <>
-                        <h2 className="mb-4">Shopping Cart</h2>
+                        <h2 className="mb-4">Shopping Cart ({carts.length})</h2>
                         {carts.map((product: Product) => (
                             <div key={product.id} className="cart-box d-flex justify-content-between align-items-center">
                                 <div>
@@ -47,6 +52,11 @@ const Cart: React.FC<CartProps> = () => {
                                 </div>
                             </div>
                         ))}
+                        <div className="mt-3">
+                            <button className="btn btn-danger" onClick={handleDeleteAll}>
+                                Delete All
+                            </button>
+                        </div>
                     </>
                 )}
             </div>
