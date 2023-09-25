@@ -16,6 +16,10 @@ html, body {
     align-items: center;
 }
 
+.decrement-icon {
+    margin-left: 5px;
+}
+
 .total-price {
     text-align: right;
     font-weight: bold;

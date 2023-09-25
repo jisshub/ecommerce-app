@@ -4,7 +4,7 @@ import { CartItem } from '../../contexts/cartContext';
 import './style.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { RiDeleteBin5Fill, RiAddLine, RiSubtractLine } from 'react-icons/ri';
 
 
 type CartProps = {};
@@ -24,6 +24,24 @@ const Cart: React.FC<CartProps> = () => {
     };
     const handleDeleteAll = () => {
         setCarts([]);
+    };
+
+    const handleIncrement = (productId: number) => {
+        const updatedCarts = carts.map(cartItem => 
+            cartItem.product.id === productId 
+            ? { ...cartItem, quantity: cartItem.quantity + 1 } 
+            : cartItem
+        );
+        setCarts(updatedCarts);
+    };
+    
+    const handleDecrement = (productId: number) => {
+        const updatedCarts = carts.map(cartItem =>
+            cartItem.product.id === productId && cartItem.quantity > 1
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        ).filter(cartItem => cartItem.quantity > 0);
+        setCarts(updatedCarts);
     };
 
     const totalPrice = carts.reduce((total, cartItem) => total + cartItem.product.price * cartItem.quantity, 0);
@@ -50,6 +68,10 @@ const Cart: React.FC<CartProps> = () => {
                                 <p>
                                     Quantity: {cartItem.quantity}
                                 </p>
+                                <div>
+                                    <RiAddLine onClick={() => handleIncrement(cartItem.product.id)} className="increment-icon" />
+                                    <RiSubtractLine onClick={() => handleDecrement(cartItem.product.id)} className="decrement-icon" />
+                                </div>
                                 </div>
                             </div>
                             <div>
